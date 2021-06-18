@@ -100,13 +100,24 @@ class _HomePageState extends State<HomePage> {
       ) {
         return GridTile(
           child: Container(
-            padding: EdgeInsets.all(
-              Dimension.gridTilePadding,
+            margin: EdgeInsets.all(
+              Dimension.gridTileMargin,
+            ),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(
+                    Dimension.boxShadowOpacity,
+                  ),
+                  spreadRadius: Dimension.boxShadowSpreadRadius,
+                  blurRadius: Dimension.boxShadowBlurRadius,
+                ),
+              ],
             ),
             child: Image.network(
               StringConstant.imagesPath +
                   snapshot.data!.results[index].posterPath,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
         );
