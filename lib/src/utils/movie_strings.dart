@@ -1,4 +1,4 @@
-abstract class StringConstant {
+abstract class MovieStrings {
   static const String imagesPath = 'https://image.tmdb.org/t/p/w185';
   static const String uriMainPath =
       'https://api.themoviedb.org/3/movie/popular?api_key=';

@@ -1,5 +1,5 @@
 abstract class IBloc {
-  void initialize();
+  Future<void> initialize();
 
   void dispose();
 }

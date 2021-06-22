@@ -1,11 +1,11 @@
 import 'dart:async';
 import '../resources/movie_repository.dart';
-import '../models/movie_model.dart';
+import '../models/movie.dart';
 import 'i_movies_bloc.dart';
 
 class MoviesBloc extends IMoviesBloc {
-  StreamController<MovieModel> _streamMoviesController =
-      StreamController<MovieModel>.broadcast();
+  StreamController<Movie> _streamMoviesController =
+      StreamController<Movie>.broadcast();
   MovieRepository _movieRepository = MovieRepository();
 
   @override
@@ -14,7 +14,7 @@ class MoviesBloc extends IMoviesBloc {
   }
 
   @override
-  void initialize() {}
+  Future<void> initialize() async {}
 
   @override
   void fetchMoviesApi() async {
@@ -23,5 +23,5 @@ class MoviesBloc extends IMoviesBloc {
   }
 
   @override
-  Stream<MovieModel> get streamMovies => _streamMoviesController.stream;
+  Stream<Movie> get streamMovies => _streamMoviesController.stream;
 }

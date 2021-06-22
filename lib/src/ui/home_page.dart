@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../styles/string_cons.dart';
-import '../styles/dimensions.dart';
-import '../models/movie_model.dart';
+import '../utils/movie_strings.dart';
+import '../utils/movie_dimensions.dart';
+import '../models/movie.dart';
 import '../blocs/i_movies_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -65,13 +65,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        elevation: Dimension.shadowAppBar,
+        elevation: MovieDimensions.shadowAppBar,
       ),
       body: StreamBuilder(
         stream: widget.iMoviesBloc.streamMovies,
         builder: (
           context,
-          AsyncSnapshot<MovieModel> snapshot,
+          AsyncSnapshot<Movie> snapshot,
         ) {
           return snapshot.hasData
               ? buildList(
@@ -88,40 +88,43 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildList(AsyncSnapshot<MovieModel> snapshot) {
-    return GridView.builder(
-      itemCount: snapshot.data!.results.length,
-      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: Dimension.gridColumns,
-      ),
-      itemBuilder: (
-        BuildContext context,
-        int index,
-      ) {
-        return GridTile(
-          child: Container(
-            margin: EdgeInsets.all(
-              Dimension.gridTileMargin,
+  Widget buildList(AsyncSnapshot snapshot) {
+    return snapshot.hasData
+        ? GridView.builder(
+            itemCount: snapshot.data.results.length,
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisExtent: MovieDimensions.mainAxisExtent,
+              crossAxisCount: MovieDimensions.gridColumns,
             ),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(
-                    Dimension.boxShadowOpacity,
+            itemBuilder: (
+              BuildContext context,
+              int index,
+            ) {
+              return GridTile(
+                child: Container(
+                  margin: EdgeInsets.all(
+                    MovieDimensions.gridTileMargin,
                   ),
-                  spreadRadius: Dimension.boxShadowSpreadRadius,
-                  blurRadius: Dimension.boxShadowBlurRadius,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(
+                          MovieDimensions.boxShadowOpacity,
+                        ),
+                        spreadRadius: MovieDimensions.boxShadowSpreadRadius,
+                        blurRadius: MovieDimensions.boxShadowBlurRadius,
+                      ),
+                    ],
+                  ),
+                  child: Image.network(
+                    MovieStrings.imagesPath +
+                        snapshot.data!.results[index].posterPath,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ],
-            ),
-            child: Image.network(
-              StringConstant.imagesPath +
-                  snapshot.data!.results[index].posterPath,
-              fit: BoxFit.fill,
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          )
+        : Container();
   }
 }

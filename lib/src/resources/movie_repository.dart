@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'i_movie_repository.dart';
 import 'movie_api_provider.dart';
-import '../models/movie_model.dart';
+import '../models/movie.dart';
 
-class MovieRepository {
+class MovieRepository extends IMovieRepository {
   final moviesApiProvider = MovieApiProvider();
 
-  Future<MovieModel> fetchAllMovies() => moviesApiProvider.fetchAllMovies();
+  @override
+  Future<Movie> fetchAllMovies() => moviesApiProvider.fetchAllMovies();
 }
