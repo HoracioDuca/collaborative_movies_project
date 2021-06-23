@@ -1,11 +1,13 @@
+import '../utils/movie_strings.dart';
+
 class ResultMovie {
   int? voteCount;
-  late int id;
+  int? id;
   bool? video;
   var voteAverage;
   String? title;
   double? popularity;
-  late String posterPath;
+  String? posterPath;
   String? originalLanguage;
   String? originalTitle;
   List<int> genreIDs;
@@ -16,12 +18,12 @@ class ResultMovie {
 
   ResultMovie({
     this.voteCount,
-    required this.id,
+    this.id,
     this.video,
     this.voteAverage,
     this.title,
     this.popularity,
-    required this.posterPath,
+    this.posterPath,
     this.originalLanguage,
     this.originalTitle,
     required this.genreIDs,
@@ -56,7 +58,9 @@ class ResultMovie {
       voteAverage: parsedJson['vote_average'],
       title: parsedJson['title'],
       popularity: parsedJson['popularity'],
-      posterPath: parsedJson['poster_path'],
+      posterPath: parsedJson['poster_path'] != null
+          ? MovieStrings.imagesPath + parsedJson['poster_path']
+          : MovieStrings.defaultImage,
       originalLanguage: parsedJson['original_language'],
       originalTitle: parsedJson['original_title'],
       genreIDs: _getListOfGenresId(getGenresIds),

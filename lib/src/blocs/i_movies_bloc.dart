@@ -5,4 +5,8 @@ abstract class IMoviesBloc extends IBloc {
   Stream<Movie> get streamMovies;
 
   void fetchMoviesApi();
+
+  void fetchMoviesFilter(
+    String filterKeys,
+  );
 }

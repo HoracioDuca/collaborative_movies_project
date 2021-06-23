@@ -25,4 +25,23 @@ class MovieApiProvider {
       );
     }
   }
+
+  Future<Movie> fetchMoviesByFilter(String filterKeys) async {
+    final _response = await client.get(
+      Uri.parse(
+        MovieStrings.filterMainPath + filterKeys,
+      ),
+    );
+    if (_response.statusCode == 200) {
+      return Movie.fromJson(
+        json.decode(
+          _response.body,
+        ),
+      );
+    } else {
+      throw Exception(
+        MovieStrings.showFetchError,
+      );
+    }
+  }
 }

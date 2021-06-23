@@ -19,9 +19,26 @@ class MoviesBloc extends IMoviesBloc {
   @override
   void fetchMoviesApi() async {
     final _allMovies = await _movieRepository.fetchAllMovies();
-    _streamMoviesController.sink.add(_allMovies);
+    _streamMoviesController.sink.add(
+      _allMovies,
+    );
   }
 
   @override
   Stream<Movie> get streamMovies => _streamMoviesController.stream;
+
+  @override
+  void fetchMoviesFilter(
+    String filterKeys,
+  ) async {
+    if (filterKeys.isEmpty) {
+      fetchMoviesApi();
+    } else {
+      _streamMoviesController.sink.add(
+        await _movieRepository.fetchMoviesByFilter(
+          filterKeys,
+        ),
+      );
+    }
+  }
 }

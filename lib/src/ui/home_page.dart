@@ -19,6 +19,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isSearching = false;
+
   @override
   void initState() {
     super.initState();
@@ -30,9 +32,29 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          widget.title,
-        ),
+        title: !isSearching
+            ? Text(
+                widget.title,
+              )
+            : TextField(
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  hintText: MovieStrings.hintText,
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onSubmitted: (
+                  filterKeys,
+                ) {
+                  widget.iMoviesBloc.fetchMoviesFilter(
+                    filterKeys,
+                  );
+                },
+              ),
         leading: IconButton(
           icon: Icon(
             Icons.menu,
@@ -46,12 +68,31 @@ class _HomePageState extends State<HomePage> {
             ),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Icon(
-              Icons.search,
-            ),
-            onPressed: () {},
-          ),
+          isSearching
+              ? IconButton(
+                  icon: Icon(
+                    Icons.cancel,
+                  ),
+                  onPressed: () {
+                    setState(
+                      () {
+                        this.isSearching = false;
+                      },
+                    );
+                  },
+                )
+              : IconButton(
+                  icon: Icon(
+                    Icons.search,
+                  ),
+                  onPressed: () {
+                    setState(
+                      () {
+                        this.isSearching = true;
+                      },
+                    );
+                  },
+                ),
         ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -80,7 +121,7 @@ class _HomePageState extends State<HomePage> {
               : Center(
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.red,
-                    color: Colors.lightGreenAccent,
+                    color: Colors.black,
                   ),
                 );
         },
@@ -117,8 +158,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   child: Image.network(
-                    MovieStrings.imagesPath +
-                        snapshot.data!.results[index].posterPath,
+                    snapshot.data.results[index].posterPath,
                     fit: BoxFit.cover,
                   ),
                 ),
