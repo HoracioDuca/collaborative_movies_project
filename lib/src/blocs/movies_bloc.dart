@@ -29,14 +29,14 @@ class MoviesBloc extends IMoviesBloc {
 
   @override
   void fetchMoviesByFilter(
-    String filterKeys,
+    String query,
   ) async {
-    if (filterKeys.isEmpty) {
+    if (query.isEmpty) {
       fetchAllMovies();
     } else {
       _streamMoviesController.sink.add(
         await _movieRepository.fetchMoviesByFilter(
-          filterKeys,
+          query,
         ),
       );
     }

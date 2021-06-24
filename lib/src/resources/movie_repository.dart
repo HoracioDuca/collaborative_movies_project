@@ -10,8 +10,8 @@ class MovieRepository extends IMovieRepository {
   Future<Movie> fetchAllMovies() => moviesApiProvider.fetchAllMovies();
 
   @override
-  Future<Movie> fetchMoviesByFilter(String filterKeys) =>
+  Future<Movie> fetchMoviesByFilter(String query) =>
       moviesApiProvider.fetchMoviesByFilter(
-        filterKeys,
+        query,
       );
 }

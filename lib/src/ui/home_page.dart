@@ -7,10 +7,10 @@ import '../blocs/i_movies_bloc.dart';
 class HomePage extends StatefulWidget {
   final String title;
 
-  final IMoviesBloc iMoviesBloc;
+  final IMoviesBloc moviesBloc;
 
   HomePage({
-    required this.iMoviesBloc,
+    required this.moviesBloc,
     required this.title,
   });
 
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    widget.iMoviesBloc.fetchMoviesApi();
+    widget.moviesBloc.fetchAllMovies();
   }
 
   @override
@@ -48,10 +48,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onSubmitted: (
-                  filterKeys,
+                  query,
                 ) {
-                  widget.iMoviesBloc.fetchMoviesFilter(
-                    filterKeys,
+                  widget.moviesBloc.fetchMoviesByFilter(
+                    query,
                   );
                 },
               ),
@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                     setState(
                       () {
                         this.isSearching = false;
+                        widget.moviesBloc.fetchAllMovies();
                       },
                     );
                   },
@@ -109,7 +110,7 @@ class _HomePageState extends State<HomePage> {
         elevation: MovieDimensions.shadowAppBar,
       ),
       body: StreamBuilder(
-        stream: widget.iMoviesBloc.streamMovies,
+        stream: widget.moviesBloc.streamMovies,
         builder: (
           context,
           AsyncSnapshot<Movie> snapshot,

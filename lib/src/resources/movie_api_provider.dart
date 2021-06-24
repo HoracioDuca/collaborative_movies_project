@@ -26,10 +26,10 @@ class MovieApiProvider {
     }
   }
 
-  Future<Movie> fetchMoviesByFilter(String filterKeys) async {
+  Future<Movie> fetchMoviesByFilter(String query) async {
     final _response = await client.get(
       Uri.parse(
-        MovieStrings.filterMainPath + filterKeys,
+        MovieStrings.filterMainPath + query,
       ),
     );
     if (_response.statusCode == 200) {

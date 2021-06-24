@@ -13,7 +13,7 @@ class MoviesApp extends StatelessWidget {
       home: Scaffold(
         body: HomePage(
           title: 'Trending Movies',
-          iMoviesBloc: _moviesBloc,
+          moviesBloc: _moviesBloc,
         ),
       ),
     );
