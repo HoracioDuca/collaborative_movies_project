@@ -4,9 +4,9 @@ import 'contract/i_bloc.dart';
 abstract class IMoviesBloc extends IBloc {
   Stream<Movie> get streamMovies;
 
-  void fetchMoviesApi();
+  void fetchAllMovies();
 
-  void fetchMoviesFilter(
-    String filterKeys,
+  void fetchMoviesByFilter(
+    String query,
   );
 }

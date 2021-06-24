@@ -2,34 +2,34 @@ import '../utils/movie_strings.dart';
 
 class ResultMovie {
   int? voteCount;
-  int? id;
+  late int id;
   bool? video;
   var voteAverage;
-  String? title;
-  double? popularity;
-  String? posterPath;
-  String? originalLanguage;
-  String? originalTitle;
-  List<int> genreIDs;
+  late String title;
+  late double popularity;
+  late String posterPath;
+  late String originalLanguage;
+  late String originalTitle;
+  late List<int> genreIDs;
   String? backdropPath;
-  bool? adult;
-  String? overview;
+  late bool adult;
+  late String overview;
   String? releaseDate;
 
   ResultMovie({
     this.voteCount,
-    this.id,
+    required this.id,
     this.video,
     this.voteAverage,
-    this.title,
-    this.popularity,
-    this.posterPath,
-    this.originalLanguage,
-    this.originalTitle,
+    required this.title,
+    required this.popularity,
+    required this.posterPath,
+    required this.originalLanguage,
+    required this.originalTitle,
     required this.genreIDs,
     this.backdropPath,
-    this.adult,
-    this.overview,
+    required this.adult,
+    required this.overview,
     this.releaseDate,
   });
 
