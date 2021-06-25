@@ -17,11 +17,28 @@ class MoviesBloc extends IMoviesBloc {
   Future<void> initialize() async {}
 
   @override
-  void fetchMoviesApi() async {
+  void fetchAllMovies() async {
     final _allMovies = await _movieRepository.fetchAllMovies();
-    _streamMoviesController.sink.add(_allMovies);
+    _streamMoviesController.sink.add(
+      _allMovies,
+    );
   }
 
   @override
   Stream<Movie> get streamMovies => _streamMoviesController.stream;
+
+  @override
+  void fetchMoviesByFilter(
+    String query,
+  ) async {
+    if (query.isEmpty) {
+      fetchAllMovies();
+    } else {
+      _streamMoviesController.sink.add(
+        await _movieRepository.fetchMoviesByFilter(
+          query,
+        ),
+      );
+    }
+  }
 }

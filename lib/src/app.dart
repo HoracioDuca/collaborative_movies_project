@@ -12,8 +12,8 @@ class MoviesApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: Scaffold(
         body: HomePage(
-          title: 'Top Trending Movies',
-          iMoviesBloc: _moviesBloc,
+          title: 'Trending Movies',
+          moviesBloc: _moviesBloc,
         ),
       ),
     );
