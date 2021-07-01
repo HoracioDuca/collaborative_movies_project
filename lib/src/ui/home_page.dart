@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'movie_detail.dart';
 import '../utils/movie_strings.dart';
 import '../utils/movie_dimensions.dart';
 import '../models/movie.dart';
@@ -55,11 +57,8 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-          ),
-          onPressed: () {},
+        leading: Image.asset(
+          MovieStrings.imageLogo,
         ),
         actions: [
           IconButton(
@@ -158,9 +157,30 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  child: Image.network(
-                    snapshot.data.results[index].posterPath,
-                    fit: BoxFit.cover,
+                  child: FadeIn(
+                    duration: Duration(
+                      seconds: MovieDimensions.fadeInPosterDuration,
+                    ),
+                    child: InkResponse(
+                      enableFeedback: true,
+                      child: Image.network(
+                        snapshot.data.results[index].posterPath,
+                        fit: BoxFit.cover,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (
+                              context,
+                            ) =>
+                                MovieDetail(
+                              result: snapshot.data.results[index],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               );

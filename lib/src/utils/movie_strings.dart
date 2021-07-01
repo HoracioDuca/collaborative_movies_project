@@ -9,4 +9,6 @@ abstract class MovieStrings {
   static const String hintText = 'Search movies here';
   static const String defaultImage =
       'https://www.lyon-ortho-clinic.com/files/cto_layout/img/placeholder/desktop_devices.jpg';
+  static const String imageLogo = "assets/images/logo.png";
+  static const String overview = "Overview";
 }

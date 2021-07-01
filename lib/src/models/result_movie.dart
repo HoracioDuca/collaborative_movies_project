@@ -54,20 +54,32 @@ class ResultMovie {
     return ResultMovie(
       voteCount: parsedJson['vote_count'],
       id: parsedJson['id'],
-      video: parsedJson['video'],
-      voteAverage: parsedJson['vote_average'],
-      title: parsedJson['title'],
+      video: parsedJson['video'] != null
+          ? parsedJson['video']
+          : 'Not video was found',
+      voteAverage: parsedJson['vote_average'] != null
+          ? parsedJson['vote_average']
+          : 'Not voted yet',
+      title: parsedJson['title'] != null ? parsedJson['title'] : 'No title',
       popularity: parsedJson['popularity'],
       posterPath: parsedJson['poster_path'] != null
           ? MovieStrings.imagesPath + parsedJson['poster_path']
           : MovieStrings.defaultImage,
-      originalLanguage: parsedJson['original_language'],
-      originalTitle: parsedJson['original_title'],
+      originalLanguage: parsedJson['original_language'] != null
+          ? parsedJson['original_language']
+          : 'N/A',
+      originalTitle: parsedJson['original_title'] != null
+          ? parsedJson['title']
+          : 'No title',
       genreIDs: _getListOfGenresId(getGenresIds),
       backdropPath: parsedJson['backdrop_path'],
       adult: parsedJson['adult'],
-      overview: parsedJson['overview'],
-      releaseDate: parsedJson['release_date'],
+      overview: parsedJson['overview'] != null
+          ? parsedJson['overview']
+          : 'Not overview has been provided',
+      releaseDate: parsedJson['release_date'] != null
+          ? parsedJson['release_date']
+          : 'Unknown date',
     );
   }
 }
