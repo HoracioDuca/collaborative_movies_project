@@ -10,16 +10,17 @@ abstract class MovieDimensions {
   static const double boxShadowSpreadRadius = 5.0;
   static const double boxShadowBlurRadius = 5.0;
   static const double posterHeight = 550.0;
-  static const double primaryColorMainOpacity = 0.8;
-  static const double secondaryColorMainOpacity = 0.8;
+  static const double primaryColorMainOpacity = 0.7;
   static const double overviewTextOpacity = 0.7;
   static const double edgeInsetsLeftPadding = 15.0;
   static const double edgeInsetsTopPadding = 10.0;
   static const double edgeInsetsBottomPadding = 20.0;
-  static const double titleFontSize = 32.0;
+  static const double titleFontSize = 25.0;
   static const double sizedBoxHeight = 5.0;
+  static const double overviewSizedBoxHeight = 10.0;
   static const double sizedBoxWidth = 5.0;
   static const double textStyleOpacity = 0.7;
   static const double subtitleFontSize = 17.0;
   static const double overviewTextFontSize = 22.0;
+  static const double sizedBoxStarsList = 50.0;
 }

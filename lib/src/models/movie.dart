@@ -18,16 +18,8 @@ class Movie {
   ) {
     var allMovies = parsedJson['results'] as List;
 
-    List<ResultMovie> movieTemp = allMovies
-        .map(
-          (
-            eachMovie,
-          ) =>
-              ResultMovie.fromJson(
-            eachMovie,
-          ),
-        )
-        .toList();
+    List<ResultMovie> movieTemp =
+        allMovies.map((eachMovie) => ResultMovie.fromJson(eachMovie)).toList();
 
     return Movie(
       page: parsedJson['page'],
