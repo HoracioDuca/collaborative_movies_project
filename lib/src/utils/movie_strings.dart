@@ -9,4 +9,12 @@ abstract class MovieStrings {
   static const String hintText = 'Search movies here';
   static const String defaultImage =
       'https://www.lyon-ortho-clinic.com/files/cto_layout/img/placeholder/desktop_devices.jpg';
+  static const String imageLogo = "assets/images/logo.png";
+  static const String overview = "Overview";
+  static const String noTitle = 'No title';
+  static const String languageNotAssigned = 'N/A';
+  static const String releaseDateNotFound = 'Unknown date';
+  static const String noVotes = 'Not voted yet';
+  static const String notVideoFound = 'Not video was found';
+  static const String notOverviewFound = 'Not overview has been provided';
 }
