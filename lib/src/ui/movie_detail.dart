@@ -1,10 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../widgets/movie_detail_poster.dart';
-import '../widgets/movie_detail_subtitle.dart';
-import '../widgets/movie_detail_title.dart';
-import '../widgets/movie_detail_overview.dart';
-import '../widgets/movie_vote_average.dart';
+import 'package:movies_widgets/movies_widgets.dart';
 import '../utils/movie_dimensions.dart';
 import '../models/result_movie.dart';
 
@@ -49,7 +45,7 @@ class MovieDetail extends StatelessWidget {
                       movieReleaseDate: result.releaseDate,
                       movieOriginalLanguage:
                           result.originalLanguage.toUpperCase(),
-                      movieVoteCount: result.voteCount,
+                      movieVoteCount: result.voteCount.toString(),
                     ),
                     MovieVoteAverage(
                       voteAverage: result.voteAverage,
