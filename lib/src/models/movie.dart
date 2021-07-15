@@ -16,10 +16,15 @@ class Movie {
   factory Movie.fromJson(
     Map<String, dynamic> parsedJson,
   ) {
-    var allMovies = parsedJson['results'] as List;
-
-    List<ResultMovie> movieTemp =
-        allMovies.map((eachMovie) => ResultMovie.fromJson(eachMovie)).toList();
+    List<ResultMovie> movieTemp;
+    if (parsedJson['results'] != null) {
+      var allMovies = parsedJson['results'] as List;
+      movieTemp = allMovies
+          .map((eachMovie) => ResultMovie.fromJson(eachMovie))
+          .toList();
+    } else {
+      movieTemp = [];
+    }
 
     return Movie(
       page: parsedJson['page'],
