@@ -17,7 +17,7 @@ class Movie {
   factory Movie.fromJson(
     Map<String, dynamic> parsedJson,
   ) {
-    List<ResultMovie> temporalMovieList = [];
+    List<ResultMovie> temporalMovieList;
     try {
       var allMovies = parsedJson['results'] as List;
       temporalMovieList = allMovies
