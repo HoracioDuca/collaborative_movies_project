@@ -1,3 +1,4 @@
+import '../utils/movie_strings.dart';
 import 'result_movie.dart';
 
 class Movie {
@@ -16,16 +17,20 @@ class Movie {
   factory Movie.fromJson(
     Map<String, dynamic> parsedJson,
   ) {
-    var allMovies = parsedJson['results'] as List;
-
-    List<ResultMovie> movieTemp =
-        allMovies.map((eachMovie) => ResultMovie.fromJson(eachMovie)).toList();
-
+    List<ResultMovie> temporalMovieList;
+    try {
+      var allMovies = parsedJson['results'] as List;
+      temporalMovieList = allMovies
+          .map((eachMovie) => ResultMovie.fromJson(eachMovie))
+          .toList();
+    } catch (Exception) {
+      throw (MovieStrings.movieListException);
+    }
     return Movie(
       page: parsedJson['page'],
       totalResults: parsedJson['total_results'],
       totalPages: parsedJson['total_pages'],
-      results: movieTemp,
+      results: temporalMovieList,
     );
   }
 }

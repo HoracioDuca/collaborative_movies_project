@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/movie_appbar_flexible_space_style.dart';
 import '../widgets/movie_search_bar.dart';
-import '../widgets/movies_grid_view.dart';
+import '../widgets/movie_grid_view.dart';
 import '../utils/movie_strings.dart';
 import '../utils/movie_dimensions.dart';
 import '../blocs/i_movies_bloc.dart';

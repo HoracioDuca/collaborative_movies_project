@@ -17,4 +17,5 @@ abstract class MovieStrings {
   static const String noVotes = 'Not voted yet';
   static const String notVideoFound = 'Not video was found';
   static const String notOverviewFound = 'Not overview has been provided';
+  static const String movieListException = 'The list of movies is empty';
 }
