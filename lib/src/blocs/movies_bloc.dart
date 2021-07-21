@@ -8,6 +8,9 @@ class MoviesBloc extends IMoviesBloc {
       StreamController<Movie>.broadcast();
   MovieRepository _movieRepository = MovieRepository();
 
+  MoviesBloc([MovieRepository? repository])
+      : _movieRepository = repository ?? MovieRepository();
+
   @override
   void dispose() {
     _streamMoviesController.close();

@@ -48,7 +48,7 @@ GridView trendingMoviesGrid(AsyncSnapshot snapshot) {
                       context,
                     ) =>
                         MovieDetail(
-                      result: snapshot.data.results[index],
+                      snapshot.data.results[index],
                     ),
                   ),
                 );

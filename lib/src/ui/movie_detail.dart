@@ -7,9 +7,9 @@ import '../models/result_movie.dart';
 class MovieDetail extends StatelessWidget {
   final ResultMovie result;
 
-  const MovieDetail({
+  const MovieDetail(
+    this.result, {
     Key? key,
-    required this.result,
   }) : super(key: key);
 
   @override
