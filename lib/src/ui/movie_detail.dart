@@ -9,7 +9,7 @@ class MovieDetail extends StatelessWidget {
   final String releaseDate;
   final String overview;
   final String originalLanguage;
-  final int voteCount;
+  final String voteCount;
   final double voteAverage;
 
   const MovieDetail({
@@ -54,8 +54,8 @@ class MovieDetail extends StatelessWidget {
                     ),
                     MovieDetailSubtitle(
                       movieReleaseDate: releaseDate,
-                      movieOriginalLanguage: originalLanguage.toUpperCase(),
-                      movieVoteCount: voteCount.toString(),
+                      movieOriginalLanguage: originalLanguage,
+                      movieVoteCount: voteCount,
                     ),
                     MovieVoteAverage(
                       voteAverage: voteAverage,

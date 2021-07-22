@@ -42,7 +42,7 @@ void main() {
                 releaseDate: testResult.releaseDate,
                 overview: testResult.overview,
                 originalLanguage: testResult.originalLanguage,
-                voteCount: testResult.voteCount,
+                voteCount: testResult.voteCount.toString(),
                 voteAverage: testResult.voteAverage,
               ),
             ),
