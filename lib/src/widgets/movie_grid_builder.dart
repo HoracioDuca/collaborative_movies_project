@@ -48,7 +48,14 @@ GridView trendingMoviesGrid(AsyncSnapshot snapshot) {
                       context,
                     ) =>
                         MovieDetail(
-                      snapshot.data.results[index],
+                      posterPath: snapshot.data.results[index].posterPath,
+                      title: snapshot.data.results[index].title,
+                      releaseDate: snapshot.data.results[index].releaseDate,
+                      overview: snapshot.data.results[index].overview,
+                      originalLanguage:
+                          snapshot.data.results[index].originalLanguage,
+                      voteCount: snapshot.data.results[index].voteCount,
+                      voteAverage: snapshot.data.results[index].voteAverage,
                     ),
                   ),
                 );

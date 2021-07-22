@@ -37,7 +37,13 @@ void main() {
           await tester.pumpWidget(
             buildWidget(
               MovieDetail(
-                testResult,
+                posterPath: testResult.posterPath,
+                title: testResult.title,
+                releaseDate: testResult.releaseDate,
+                overview: testResult.overview,
+                originalLanguage: testResult.originalLanguage,
+                voteCount: testResult.voteCount,
+                voteAverage: testResult.voteAverage,
               ),
             ),
           );

@@ -2,14 +2,25 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_widgets/movies_widgets.dart';
 import '../utils/movie_dimensions.dart';
-import '../models/result_movie.dart';
 
 class MovieDetail extends StatelessWidget {
-  final ResultMovie result;
+  final String posterPath;
+  final String title;
+  final String releaseDate;
+  final String overview;
+  final String originalLanguage;
+  final int voteCount;
+  final double voteAverage;
 
-  const MovieDetail(
-    this.result, {
+  const MovieDetail({
     Key? key,
+    required this.posterPath,
+    required this.title,
+    required this.releaseDate,
+    required this.overview,
+    required this.originalLanguage,
+    required this.voteCount,
+    required this.voteAverage,
   }) : super(key: key);
 
   @override
@@ -24,7 +35,7 @@ class MovieDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MovieDetailPoster(
-                moviePosterPath: result.posterPath,
+                moviePosterPath: posterPath,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -36,22 +47,21 @@ class MovieDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MovieDetailTitle(
-                      movieTitle: result.title,
+                      movieTitle: title,
                     ),
                     SizedBox(
                       height: MovieDimensions.sizedBoxHeight,
                     ),
                     MovieDetailSubtitle(
-                      movieReleaseDate: result.releaseDate,
-                      movieOriginalLanguage:
-                          result.originalLanguage.toUpperCase(),
-                      movieVoteCount: result.voteCount.toString(),
+                      movieReleaseDate: releaseDate,
+                      movieOriginalLanguage: originalLanguage.toUpperCase(),
+                      movieVoteCount: voteCount.toString(),
                     ),
                     MovieVoteAverage(
-                      voteAverage: result.voteAverage,
+                      voteAverage: voteAverage,
                     ),
                     MovieDetailOverview(
-                      movieOverview: result.overview,
+                      movieOverview: overview,
                     ),
                   ],
                 ),
