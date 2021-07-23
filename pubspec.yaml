@@ -33,8 +33,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.3
   animate_do: ^2.0.0
+  network_image_mock: ^2.0.1
 
 dev_dependencies:
+  test:
+  mockito:
+  build_runner:
   flutter_test:
     sdk: flutter
 
