@@ -12,7 +12,7 @@ class MoviesApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: Scaffold(
         body: HomePage(
-          title: 'Trending Movies',
+          title: 'sdfsdfhsdf',
           moviesBloc: _moviesBloc,
         ),
       ),
